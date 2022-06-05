@@ -19,13 +19,20 @@ const Button = styled.button`
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: ${props => props.rollState ? "2.5rem" : "2.0rem"};
     color: #FFFFFF;
 `;
 
 const Roll = (props) => {
     return (
-            <Button className={"Roll"}>{props.buttonLabel}</Button>
+            <Button 
+                className={"Roll"} 
+                onClick={props.rollDiceClick}
+            >
+                {
+                    props.rollState ? "Roll" : "Restart Game"
+                }
+            </Button>
     );
 }
 
