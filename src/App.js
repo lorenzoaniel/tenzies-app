@@ -16,7 +16,22 @@ const Main = styled.div`
   padding: 0 2.5rem;
 `;
 
+
+
 const App = () => {
+  
+  const [rollState, setRollState] = React.useState(true);
+
+  const calculateTenzie = (state) => {
+    console.log("check dice and return true or false");
+    return state ? false : true;
+  }
+  
+  const changeRollState = () => {
+    setRollState((prevState) => calculateTenzie(prevState));
+    console.log("run change roll state");
+  }
+
   return (
     <>
       <GlobalStyle />
@@ -27,7 +42,7 @@ const App = () => {
         {
           <>
             <Dice diceQuantity={10}/>
-            <Roll buttonLabel={"Roll"}/>
+            <Roll rollDiceClick={changeRollState} rollState={rollState}/>
           </>
         }
       </Board>
