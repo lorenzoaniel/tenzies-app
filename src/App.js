@@ -20,9 +20,21 @@ const Main = styled.div`
 
 const App = () => {
   
+  const AppBase = {
+    numberOfDice: 10,
+    appTitle: "Tenzies",
+    appSummary: "Roll until all dice are the same. Click each die to freeze it at its current value between rolls."
+  }
+
   const [rollState, setRollState] = React.useState(true);
+  const [diceComponentArr, setDiceComponentArr] = React.useState(
+    new Array(AppBase.numberOfDice).fill(0).map((ele, index) => {
+      return <Dice key={index+1} className={`dice${index+1}`}/>
+    })
+  );
 
   const calculateTenzie = (state) => {
+    setDiceComponentArr((prevArr) => prevArr)
     console.log("check dice and return true or false");
     return state ? false : true;
   }
@@ -36,15 +48,13 @@ const App = () => {
     <>
       <GlobalStyle />
       <Main>
-      <Title title={"Tenzies"} />
-      <Summary summary={"Roll until all dice are the same. Click each die to freeze it at its current value between rolls."} />
+      <Title title={AppBase.appTitle} />
+      <Summary summary={AppBase.appSummary} />
       <Board>
-        {
-          <>
-            <Dice diceQuantity={10}/>
-            <Roll rollDiceClick={changeRollState} rollState={rollState}/>
-          </>
-        }
+          {
+            diceComponentArr
+          }
+            <Roll rollDiceClick={changeRollState} rollState={rollState} />
       </Board>
       </Main>
     </>
