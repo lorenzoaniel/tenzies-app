@@ -7,7 +7,7 @@ const Div = styled.div`
     width: 5rem; 
     border-radius: 0.5rem;
     box-shadow: 0rem 0.3rem 0.125rem rgba(0, 0, 0, 0.15);
-    background-color: #FFFFFF;
+    background-color: ${props =>  props.diceLockState ?  "#59E391" : "#FFFFFF"};
 
     /* GRID/FLEX */
     grid-area: ${props => props.className};
@@ -24,21 +24,13 @@ const Div = styled.div`
 `;
 
 const Dice = (props) => {
-
-    const [diceValue, setDiceValue] = React.useState(0)
-
-    const handleClick = () => {
-        console.log(props.className)
-        setDiceValue(0)
-    }
-
     return (
         <Div 
             className={props.className}
-            onClick={handleClick}
+            onClick={props.handleClick}
         >
             {
-                diceValue
+                props.diceValue
             }
         </Div>
     );
