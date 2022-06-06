@@ -10,6 +10,7 @@ const Div = styled.div`
     background-color: ${props =>  props.diceLockState ?  "#59E391" : "#FFFFFF"};
 
     /* GRID/FLEX */
+
     grid-area: ${props => props.className};
     display: flex;
     justify-content: center;
