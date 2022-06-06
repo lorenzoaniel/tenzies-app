@@ -29,6 +29,7 @@ const Dice = (props) => {
         <Div 
             className={props.className}
             onClick={props.handleClick}
+            {...props}
         >
             {
                 props.diceValue
