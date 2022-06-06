@@ -42,7 +42,6 @@ const App = () => {
         prevDice :
         {...prevDice, diceValue: newRandVal}
     }))
-    renderDices()
   }
 
   const changeLockState = (id) => {
@@ -51,19 +50,16 @@ const App = () => {
         {...dice, diceLockState: !dice.diceLockState} :
         dice
     }))
-    renderDices()
   }
 
-  const renderDices = () => {
-    return diceObjArr.map(prevDice => 
-      <Dice 
-        handleClick={() => changeLockState(prevDice.diceId)} 
-        diceLockState={prevDice.diceLockState} 
-        diceValue={prevDice.diceValue} 
-        key={prevDice.diceId} className={`dice${prevDice.diceId}`}
-      />
-   )
-  }
+  const renderDices = diceObjArr.map(prevDice => 
+    <Dice 
+      handleClick={() => changeLockState(prevDice.diceId)} 
+      diceLockState={prevDice.diceLockState} 
+      diceValue={prevDice.diceValue} 
+      key={prevDice.diceId} className={`dice${prevDice.diceId}`}
+    />
+  )
 
   return (
     <>
@@ -73,7 +69,7 @@ const App = () => {
       <Summary summary={AppBase.appSummary} />
       <Board>
           {
-            renderDices()
+            renderDices
           }
             <Roll rollDiceClick={rollDices} gameOverState={gameOver} />
       </Board>
