@@ -19,7 +19,7 @@ const Button = styled.button`
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;
-    font-size: ${props => props.rollState ? "2.5rem" : "2.0rem"};
+    font-size: ${props => props.gameOverState ? "2.5rem" : "2.0rem"};
     color: #FFFFFF;
 `;
 
@@ -30,7 +30,7 @@ const Roll = (props) => {
                 onClick={props.rollDiceClick}
             >
                 {
-                    props.rollState ? "Roll" : "Restart Game"
+                    props.gameOverState ? "Restart Game" : "Roll" 
                 }
             </Button>
     );
