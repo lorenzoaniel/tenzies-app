@@ -10,7 +10,6 @@ const Div = styled.div`
     background-color: #FFFFFF;
 
     /* GRID/FLEX */
-    
     grid-area: ${props => props.className};
     display: flex;
     justify-content: center;
@@ -26,19 +25,23 @@ const Div = styled.div`
 
 const Dice = (props) => {
 
-    const renderDices = () => {
+    const [diceValue, setDiceValue] = React.useState(0)
 
-        let dicesArr = new Array(props.diceQuantity).fill(0).map((ele, index) => {
-            const diceNumber = index+1;
-            return <Div className={`dice${diceNumber}`} key={`dice${diceNumber}`} >{`${diceNumber}`}</Div>
-        });
-
-        return dicesArr; 
+    const handleClick = () => {
+        console.log(props.className)
+        setDiceValue(0)
     }
 
     return (
-        renderDices()
-    )
+        <Div 
+            className={props.className}
+            onClick={handleClick}
+        >
+            {
+                diceValue
+            }
+        </Div>
+    );
 }
 
 export default Dice;
