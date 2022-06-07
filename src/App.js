@@ -8,6 +8,7 @@ import Board from './Components/Board';
 import Roll from './Components/Roll';
 import Dice from './Components/Dice';
 import {createDiceObj, generateRandomValue} from './Helpers/DiceInitializers';
+import Confetti from 'react-confetti';
 
 const Main = styled.div`
   background-color: #F5F5F5;
@@ -82,14 +83,15 @@ const App = () => {
     <>
       <GlobalStyle />
       <Main>
-      <Title title={AppBase.appTitle} />
-      <Summary summary={AppBase.appSummary} />
-      <Board>
-          {
-            renderDices
-          }
-            <Roll rollDiceClick={rollDices} gameOverState={gameOver} />
-      </Board>
+        {gameOver && <Confetti />} 
+        <Title title={AppBase.appTitle} />
+        <Summary summary={AppBase.appSummary} />
+        <Board>
+            {
+              renderDices
+            }
+              <Roll rollDiceClick={rollDices} gameOverState={gameOver} />
+        </Board>
       </Main>
     </>
   );
