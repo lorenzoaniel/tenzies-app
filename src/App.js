@@ -29,12 +29,29 @@ const App = () => {
   const [diceObjArr, setDiceObjArr] = React.useState(createDiceObj(AppBase.numberOfDice, AppBase.diceFaces.start, AppBase.diceFaces.end));
   const [gameOver, setGameOver] = React.useState(false);
   
+  const checkTenzies = () => {
+    let temp = false;
+    for(let dice of diceObjArr){
+      if(dice.diceValue !== diceObjArr[0].diceValue){
+        temp = false;
+        break;
+      }
+      temp = true;
+    }
+    setGameOver(temp);
+  }
+
+  React.useEffect(checkTenzies, [diceObjArr])
+
+  const resetGame = () => {
+    setDiceObjArr(createDiceObj(AppBase.numberOfDice, AppBase.diceFaces.start, AppBase.diceFaces.end));
+    setGameOver(false);
+  }
+
   const rollDices = () => {
     if(gameOver){
-      console.log("game over");
-      return;
-    } 
-
+      resetGame();
+    }
     setDiceObjArr((prevDiceArr) => prevDiceArr.map((prevDice) => {
       const newRandVal = generateRandomValue(AppBase.diceFaces.start, AppBase.diceFaces.end);
 
