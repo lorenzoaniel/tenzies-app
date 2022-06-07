@@ -1,8 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import ButtonAnimation from '../Mixins/ButtonAnimation';
 
 const Div = styled.div`
     //background: green; //testing
+
+    /* GENERAL */
+
     height: 5rem;
     width: 5rem; 
     border-radius: 0.5rem;
@@ -22,6 +26,11 @@ const Div = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 2.5rem;  
+
+    /* TRANSITIONS */
+
+    ${ButtonAnimation}
+
 `;
 
 const Dice = (props) => {
